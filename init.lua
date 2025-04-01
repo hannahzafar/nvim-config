@@ -35,3 +35,6 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+  -- Custom snippets
+  vim.g.lua_snippets_path = vim.fn.stdpath "config" .. "/lua/lua_snippets"
