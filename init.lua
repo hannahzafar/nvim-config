@@ -1,19 +1,3 @@
--- [[ Bootstrap lazy.nvim ]] 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
-end
-vim.opt.rtp:prepend(lazypath)
 
 -- Set <space> as the leader key. See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -36,7 +20,7 @@ vim.opt.relativenumber = true
 vim.opt.mouse = 'a'
 
 -- Don't show the mode, since it's already in the status line
-vim.opt.showmode = false
+-- vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -102,6 +86,7 @@ vim.opt.confirm = true
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+
 vim.keymap.set('v', '<leader>ds', ":normal! 0d^<CR>", { desc = "Delete spaces before first character" })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
@@ -114,7 +99,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
---
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
@@ -154,16 +138,34 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- [[ Install `lazy.nvim` plugin manager ]]
+--    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+
 -- [[ Setup lazy.nvim ]]
 -- Plugins
 local plugins = { 
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
-	{
-	'nvim-telescope/telescope.nvim', tag = '0.1.8',
-	dependencies = { 'nvim-lua/plenary.nvim' }
-    	},
-	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"}
+  {
+    'nvim-telescope/telescope.nvim', tag = '0.1.8',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+  {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"}
 }
 
 -- Setup plugins
@@ -197,7 +199,7 @@ end, { desc = 'Telescope [F]ind [N]eovim files' })
 -- Treesitter
 local configs = require('nvim-treesitter.configs')
 configs.setup({
-          ensure_installed = { "c", "lua", "vim", "python", "bash" },
-          highlight = { enable = true },
-          indent = { enable = true },  
-        })
+  ensure_installed = { "c", "lua", "vim", "python", "bash" },
+  highlight = { enable = true },
+  indent = { enable = true },
+  })
