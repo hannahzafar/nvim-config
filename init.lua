@@ -75,6 +75,16 @@ vim.opt.splitbelow = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
+-- Tab and spacing
+vim.cmd [[
+set autoindent
+set expandtab
+set shiftwidth=2
+set smartindent
+set softtabstop=2
+set tabstop=2
+]]
+
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
