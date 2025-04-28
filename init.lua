@@ -157,37 +157,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Setup lazy.nvim ]]
--- Plugins
-local plugins = { 
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-
-  {
-    'nvim-telescope/telescope.nvim', tag = '0.1.8',
-    dependencies = { 'nvim-lua/plenary.nvim' }
-  },
-  {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-    },
-    lazy = false, -- neo-tree will lazily load itself
-    ---@module "neo-tree"
-    ---@type neotree.Config?
-    opts = {
-      -- fill any relevant options here
-    },
-  }
-}
-
--- Setup plugins
 require("lazy").setup({
   spec = {
-  -- add your plugins here
-  plugins
+    -- import your plugins
+    { import = "plugins" },
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
@@ -196,28 +169,3 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
--- Colorscheme
-require('catppuccin').setup()
-vim.cmd.colorscheme 'catppuccin'
-
--- Telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope [F]ind [F]iles' })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope [F]ind by [G]rep' })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope [F]ind [B]uffers' })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags , { desc = 'Telescope [F]ind [H]elp tags' })
--- Shortcut for searching your Neovim configuration files
-vim.keymap.set('n', '<leader>fn', function()
-  builtin.find_files { cwd = vim.fn.stdpath 'config' }
-end, { desc = 'Telescope [F]ind [N]eovim files' })
-
--- Treesitter
-local configs = require('nvim-treesitter.configs')
-configs.setup({
-  ensure_installed = { "c", "lua", "vim", "python", "bash" },
-  highlight = { enable = true },
-  indent = { enable = true },
-  })
-
--- Neotree
-vim.keymap.set('n', '<C-n>', ':Neotree<CR>')
