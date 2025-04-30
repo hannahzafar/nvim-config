@@ -1,6 +1,3 @@
-require("config.options")
-require("config.keymaps")
-require("config.autocmds")
 -- Set <space> as the leader key. See `:help mapleader`
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -23,6 +20,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+require("config.options")
+require("config.keymaps")
+require("config.autocmds")
+require("lazy").setup("plugins")
+
+--- [[
 -- [[ Setup lazy.nvim ]]
 require("lazy").setup({
   spec = {
@@ -35,4 +38,4 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
-
+--- ]]
