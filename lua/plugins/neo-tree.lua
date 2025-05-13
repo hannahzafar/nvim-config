@@ -6,8 +6,17 @@ return {
     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
     "MunifTanjim/nui.nvim",
   },
---  lazy = false, -- neo-tree will lazily load itself
-  config = function()
-    vim.keymap.set('n', '<C-n>', ':Neotree toggle<CR>', {})
-  end
+  lazy = false, -- neo-tree will lazily load itself
+  keys = {
+    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+  },
+  opts = {
+    filesystem = {
+      window = {
+        mappings = {
+          ['\\'] = 'close_window',
+        },
+      },
+    },
+  },
 }
