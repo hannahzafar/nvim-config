@@ -1,6 +1,10 @@
 return {
   {
     "olimorris/codecompanion.nvim",
+    keys = {
+      {"<leader>cc", function() require("codecompanion").toggle() end, desc= "[C]odeCompanion [C]hat"},
+      {"<leader>ca", function() require("codecompanion").actions() end, desc= "[C]odeCompanion [A]ctions"},
+    },
     opts = {
       strategies = {
         chat = { adapter = "nasa_ai" },
