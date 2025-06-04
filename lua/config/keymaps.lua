@@ -30,6 +30,16 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- [[ My Custom Keymaps]]
+vim.keymap.set('n', '<leader>ts',
+  function()
+    vim.cmd.vnew()
+    vim.cmd.term()
+    vim.cmd.wincmd("J")
+    vim.api.nvim_win_set_height(0,15)
+  end,
+  { desc = '[T]erminal [S]mall' }
+)
+
 vim.keymap.set('v', '<leader>ds', ":normal! 0d^<CR>", { desc = "Delete spaces before first character" })
 
 -- Paste character text below current line

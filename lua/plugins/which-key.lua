@@ -8,7 +8,7 @@ return {
     spec = {
       { '<leader>s', group = '[S]earch' },
       { '<leader>c', group = '[C]odeCompanion' },
-      { '<leader>t', group = '[T]oggle' },
+      { '<leader>t', group = '[T]erminal' },
     }
   },
   keys = {
