@@ -1,6 +1,5 @@
+-- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
-vim.keymap.set('v', '<leader>ds', ":normal! 0d^<CR>", { desc = "Delete spaces before first character" })
-
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -30,3 +29,13 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- [[ My Custom Keymaps]]
+vim.keymap.set('v', '<leader>ds', ":normal! 0d^<CR>", { desc = "Delete spaces before first character" })
+
+-- Paste character text below current line
+vim.keymap.set("n", "<leader>p", [[:set paste<CR>o<C-R>+<Esc>:set nopaste<CR>]],
+  { desc = "Paste from clipboard below current line" })
+
+-- Paste character text above current line
+vim.keymap.set("n", "<leader>P", [[:set paste<CR>O<C-R>+<Esc>:set nopaste<CR>]],
+  { desc = "Paste from clipboard above current line" })
