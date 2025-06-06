@@ -3,9 +3,15 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     require('lualine').setup{
-      --    options = {
-        --      theme = 'dracula'
-        --    }
+      options = {
+        -- Set theme to dracula with minor change
+        theme = function()
+          local dracula = require('lualine.themes.dracula')
+          -- Set terminal mode to have the same appearance as insert mode
+          dracula.terminal = vim.deepcopy(dracula.insert)
+          return dracula
+        end,
+      },
         sections = {
           lualine_c = {
             {
