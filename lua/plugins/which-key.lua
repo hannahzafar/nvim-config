@@ -9,6 +9,7 @@ return {
       { '<leader>s', group = '[S]earch' },
       { '<leader>c', group = '[C]odeCompanion' },
       { '<leader>t', group = '[T]erminal' },
+      { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
     }
   },
   keys = {
