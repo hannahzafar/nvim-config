@@ -10,6 +10,7 @@ return {
       { '<leader>c', group = '[C]odeCompanion' },
       { '<leader>t', group = '[T]oggle/[T]erminal' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+      { '<leader>p', group = 'Special [P]aste'},
     }
   },
   keys = {

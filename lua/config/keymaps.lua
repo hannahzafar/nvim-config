@@ -45,9 +45,9 @@ vim.keymap.set('n', '<leader>ts',
 vim.keymap.set('v', '<leader>ds', ":normal! 0d^<CR>", { desc = "Delete spaces before first character" })
 
 -- Paste character text below current line
-vim.keymap.set("n", "<leader>p", [[:set paste<CR>o<C-R>+<Esc>:set nopaste<CR>]],
-  { desc = "Paste from clipboard below current line" })
+vim.keymap.set("n", "<leader>pb", [[:set paste<CR>o<C-R>+<Esc>:set nopaste<CR>]],
+  { desc = "[P]aste from clipboard [B]elow current line" })
 
 -- Paste character text above current line
-vim.keymap.set("n", "<leader>P", [[:set paste<CR>O<C-R>+<Esc>:set nopaste<CR>]],
-  { desc = "Paste from clipboard above current line" })
+vim.keymap.set("n", "<leader>pa", [[:set paste<CR>O<C-R>+<Esc>:set nopaste<CR>]],
+  { desc = "[P]aste from clipboard [A]bove current line" })
