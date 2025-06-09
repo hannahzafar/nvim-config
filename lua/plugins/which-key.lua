@@ -11,6 +11,7 @@ return {
       { '<leader>t', group = '[T]oggle/[T]erminal' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       { '<leader>p', group = 'Special [P]aste'},
+      { '<leader>sb', group = '[S]earch[b]ox'}
     }
   },
   keys = {
