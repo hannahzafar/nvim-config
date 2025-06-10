@@ -6,7 +6,7 @@ return {
   keys = {
     { "<leader>sbs",function () require("searchbox").match_all() end, desc = "[S]earch[b]ox [S]earch" },
     { "<leader>sbc",function () require("searchbox").match_all({default_value = vim.fn.expand("<cword>")}) end,
-      desc = "[S]earch[b]ox search [C]urrent word" },
+      desc = "[S]earch[b]ox search [c]urrent word" },
 
     { "<leader>sbr",function () require("searchbox").replace({confirm = 'menu'}) end, desc = "[S]earch[b]ox [R]eplace" },
     { "<leader>sbC",function () require("searchbox").replace({default_value = vim.fn.expand("<cword>")}) end,
