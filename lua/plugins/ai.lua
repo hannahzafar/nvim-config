@@ -2,8 +2,8 @@ return {
   {
     "olimorris/codecompanion.nvim",
     keys = {
-      {"<leader>cc", function() require("codecompanion").toggle() end, desc= "[C]odeCompanion [C]hat"},
-      {"<leader>ca", function() require("codecompanion").actions() end, desc= "[C]odeCompanion [A]ctions"},
+      {"<leader>ac", function() require("codecompanion").toggle() end, desc= "AI [C]hat"},
+      {"<leader>aa", function() require("codecompanion").actions() end, desc= "AI [A]ctions"},
     },
     opts = {
       strategies = {
