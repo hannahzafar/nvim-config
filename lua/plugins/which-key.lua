@@ -11,7 +11,7 @@ return {
       { '<leader>gh', group = 'Git [H]unk', mode = { 'n', 'v' } },
       { '<leader>a', group = 'AI' },
       { '<leader>s', group = '[S]earch' },
-      { '<leader>c', group = '[C]odeCompanion' },
+      { '<leader>l', group = 'lsp' },
       { '<leader>t', group = '[T]erminal' },
       { '<leader>p', group = '[P]aste special'},
       { '<leader>sb', group = 'Search[b]ox'}
