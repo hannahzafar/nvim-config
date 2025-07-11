@@ -38,9 +38,25 @@ return {
         bashls = {
           filetypes = {"sh", "zsh"}
         },
-        ruff = {},
         pyright = {
-          settings = { pyright = { disableOrganizeImports = true } }
+          settings = {
+            pyright = { disableOrganizeImports = true },
+            -- If I want to use ruff without pyright in the future:
+            -- python = {
+            --   analysis = {
+            --     -- Ignore all files for analysis to exclusively use Ruff for linting
+            --     ignore = { '*' },
+            --   }
+            -- }
+          }
+        },
+        ruff = {
+          init_options = {
+            settings = {
+              format = { enable = true },
+              lint = { enable = false}, -- use ruff exclusively as a formatter
+            }
+          }
         },
         lua_ls = {
           settings = { Lua = {diagnostics = {globals = {"vim"}}} }
