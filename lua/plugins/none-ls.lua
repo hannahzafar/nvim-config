@@ -7,6 +7,5 @@ return {
         null_ls.builtins.formatting.stylua,
       },
     })
-    vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = 'Null-ls format' })
   end,
 }

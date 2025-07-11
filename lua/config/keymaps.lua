@@ -41,6 +41,9 @@ vim.keymap.set('n', '<leader>ts',
   { desc = '[T]erminal [S]mall' }
 )
 
+-- LSP formatting
+vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = 'LSP [F]ormat buffer' })
+
 -- Delete spaces at beginning
 vim.keymap.set('v', '<leader>ds', ":normal! 0d^<CR>", { desc = "Delete spaces before first character" })
 
