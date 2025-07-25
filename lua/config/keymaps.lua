@@ -31,16 +31,26 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- [[ My Custom Keymaps]]
 -- Open nvim terminal at bottom
-vim.keymap.set('n', '<leader>ts',
+vim.keymap.set('n', '<leader>tb',
   function()
     vim.cmd.vnew()
     vim.cmd.term()
     vim.cmd.wincmd("J")
     vim.api.nvim_win_set_height(0,15)
   end,
-  { desc = '[T]erminal [S]mall' }
+  { desc = '[T]erminal [B]ottom' }
 )
 
+vim.keymap.set('n', '<leader>ts',
+  function()
+    -- Go to bottom terminal window
+    vim.cmd.wincmd("J")
+    -- Createrm vertical split
+    vim.cmd.vnew()
+    vim.cmd.term()
+  end,
+  { desc = '[T]erminal vertical [S]plit' }
+)
 -- LSP formatting
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = 'LSP [F]ormat buffer' })
 
