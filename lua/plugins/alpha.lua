@@ -10,5 +10,8 @@ return {
       require("alpha").setup(
         startify.config
       )
+      -- keymap to open other than startup
+      vim.keymap.set("n", "<leader>n", ":Alpha<CR>", { desc = "[N]eovim dashboard" })
+      vim.keymap.set("n", "<leader>N", ":vsplit | Alpha<CR>", { desc = "[N]eovim dashboard split" })
     end,
   }
