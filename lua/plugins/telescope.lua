@@ -56,6 +56,8 @@ return {
             },
             n = {
               ["dd"] = actions.delete_buffer,     -- "dd" in normal mode
+              ["S"] = actions.select_horizontal,
+              ["s"] = actions.select_vertical,
             },
           },
         },
