@@ -16,6 +16,8 @@ return {
       { '<leader>p', group = '[P]aste special'},
       { '<leader>sb', group = 'Search[b]ox'}
     }
+    },
+    sort = { "group"},
   },
   keys = {
     {
