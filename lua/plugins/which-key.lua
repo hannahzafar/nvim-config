@@ -14,8 +14,8 @@ return {
       { '<leader>l', group = 'lsp' },
       { '<leader>t', group = '[T]erminal' },
       { '<leader>p', group = '[P]aste special'},
-      { '<leader>sb', group = 'Search[b]ox'}
-    }
+      { '<leader>sb', group = 'Search[b]ox'},
+      { 'z', group = 'Folding'}
     },
     sort = { "group"},
   },
