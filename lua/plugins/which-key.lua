@@ -12,7 +12,6 @@ return {
       { '<leader>a', group = 'AI' },
       { '<leader>s', group = '[S]earch' },
       { '<leader>l', group = 'lsp' },
-      { '<leader>t', group = '[T]erminal' },
       { '<leader>p', group = '[P]aste special'},
       { '<leader>sb', group = 'Search[b]ox'},
       { 'z', group = 'Folding'}
