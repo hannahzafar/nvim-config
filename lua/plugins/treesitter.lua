@@ -5,6 +5,7 @@ return {
       auto_install = true,
       highlight = { enable = true },
       indent = { enable = true },
+    ensure_installed ={"lua","gitignore", "markdown", "markdown_inline", "python", "vim", "yaml"},
     -- ensure_installed ={"lua","gitignore", "markdown", "markdown_inline", "python", "vim", "yaml"},
   },
   config = function(_, opts)
