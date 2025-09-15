@@ -11,3 +11,22 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.api.nvim_create_autocmd("BufNewFile", {
+  pattern = "*.sh", -- Apply to new files with .sh extension
+  callback = function()
+    -- Check if the buffer is empty before inserting the shebang
+    if vim.fn.line('$') == 1 and vim.fn.getline(1) == '' then
+      vim.api.nvim_buf_set_lines(0, 0, 0, false, { "#!/bin/bash" })
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd("BufNewFile", {
+  pattern = "*.py", -- Apply to new files with .py extension
+  callback = function()
+    if vim.fn.line('$') == 1 and vim.fn.getline(1) == '' then
+      vim.api.nvim_buf_set_lines(0, 0, 0, false, { "#!/usr/bin/env python" })
+    end
+  end,
+})
+
