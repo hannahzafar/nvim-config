@@ -41,13 +41,6 @@ return {
         pyright = {
           settings = {
             pyright = { disableOrganizeImports = true },
-            -- If I want to use ruff without pyright in the future:
-            -- python = {
-            --   analysis = {
-            --     -- Ignore all files for analysis to exclusively use Ruff for linting
-            --     ignore = { '*' },
-            --   }
-            -- }
           }
         },
         ruff = {
