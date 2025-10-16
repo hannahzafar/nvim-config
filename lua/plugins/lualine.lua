@@ -20,11 +20,11 @@ return {
             }
           },
           lualine_x = {
-            {
-              'lsp_status',
-              -- List of LSP names to ignore (e.g., `null-ls`):
-              --ignore_lsp = {'null-ls'},
-            },
+            -- {
+            --   'lsp_status',
+            --   -- List of LSP names to ignore (e.g., `null-ls`):
+            --   --ignore_lsp = {'null-ls'},
+            -- },
             'encoding', 'fileformat', 'filetype'
           }
         }
