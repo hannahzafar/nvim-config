@@ -41,3 +41,8 @@ vim.keymap.set("n", "<leader>pb", [[:set paste<CR>o<C-R>+<Esc>:set nopaste<CR>]]
 -- Paste character text above current line
 vim.keymap.set("n", "<leader>pa", [[:set paste<CR>O<C-R>+<Esc>:set nopaste<CR>]],
   { desc = "[P]aste from clipboard [A]bove current line" })
+
+-- Set CWD to directory of current buffer
+vim.keymap.set('n', '<leader>cd', function()
+  vim.cmd('cd ' .. vim.fn.expand('%:p:h'))
+end, { desc = 'Set CWD to current buffer directory' })
