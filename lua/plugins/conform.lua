@@ -20,7 +20,7 @@ return {
     -- Define your formatters
     formatters_by_ft = {
       -- lua = { "stylua" }, -- stylua not working right now
-      python = { "ruff_format", "ruff" },
+      python = { "ruff_format", "ruff_organize_imports" },
     },
     -- Set default options
     default_format_opts = {
