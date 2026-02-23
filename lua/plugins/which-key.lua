@@ -9,6 +9,7 @@ return {
       { '<leader>g', group = 'Git', mode = { 'n', 'v' } },
       { '<leader>gB', group = 'Git [B]uffer', mode = { 'n', 'v' } },
       { '<leader>gt', group = 'Git [T]oggle', mode = { 'n', 'v' } },
+      { '<leader>t', group = '[T]oggle' },
       { '<leader>a', group = 'AI' },
       { '<leader>s', group = '[S]earch' },
       { '<leader>l', group = 'lsp' },
