@@ -12,7 +12,6 @@ return {
       { '<leader>t', group = '[T]oggle' },
       { '<leader>a', group = 'AI' },
       { '<leader>s', group = '[S]earch' },
-      { '<leader>l', group = 'lsp' },
       { '<leader>p', group = '[P]aste special'},
       { '<leader>sb', group = 'Search[b]ox'},
       { 'z', group = 'Folding'}

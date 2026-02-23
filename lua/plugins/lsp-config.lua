@@ -29,7 +29,7 @@ return {
             mode = mode or 'n'
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
-          map('<leader>ld', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, "Toggle [d]iagnostics")
+          map('<leader>td', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, "[T]oggle [d]iagnostics")
         end
       })
     end,
