@@ -26,5 +26,15 @@ return {
         },
       },
     },
+    window = {
+      mappings = {
+        ["y"] = function(state)
+          local node = state.tree:get_node()
+          local filename = node.name -- Gets just the name, not the path
+          vim.fn.setreg("+", filename)
+          vim.notify("Copied filename: " .. filename)
+        end,
+      }
+    }
   },
 }
