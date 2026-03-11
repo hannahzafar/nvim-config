@@ -31,6 +31,7 @@ return {
     formatters_by_ft = {
       -- lua = { "stylua" }, -- stylua not working right now
       python = { "ruff_format", "ruff_organize_imports" },
+      yaml = { "prettier", "yamlfmt" },
     },
     -- Customize formatters
     formatters = {
