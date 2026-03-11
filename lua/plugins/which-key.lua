@@ -6,11 +6,12 @@ return {
       mappings = false
     },
     spec = {
-      { '<leader>g', group = 'Git', mode = { 'n', 'v' } },
+      { '<leader>g', group = '[G]it', mode = { 'n', 'v' } },
       { '<leader>gB', group = 'Git [B]uffer', mode = { 'n', 'v' } },
       { '<leader>gt', group = 'Git [T]oggle', mode = { 'n', 'v' } },
       { '<leader>t', group = '[T]oggle' },
       { '<leader>a', group = 'AI' },
+      { '<leader>d', group = '[D]ashboard' },
       { '<leader>s', group = '[S]earch' },
       { '<leader>p', group = '[P]aste special'},
       { '<leader>sb', group = 'Search[b]ox'},
