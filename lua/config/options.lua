@@ -1,4 +1,5 @@
 -- Set to true if you have a Nerd Font installed and selected in the terminal
+--
 vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
@@ -81,6 +82,9 @@ vim.o.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
+
+-- Set command-line height to 2 lines to prevent message truncation
+vim.o.cmdheight = 2
 
 -- Setup clipboard on discover
 -- Stolen from TJ Devries:

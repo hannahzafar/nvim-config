@@ -4,6 +4,7 @@ return {
   config = function()
     require('lualine').setup{
       options = {
+        { globalstatus = true },
         -- Set theme to dracula with minor change
         theme = function()
           local dracula = require('lualine.themes.dracula')
