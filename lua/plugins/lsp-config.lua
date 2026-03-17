@@ -25,11 +25,13 @@ return {
           -- nmap('gry', vim.lsp.buf.type_definition, "Goto type definition")
           -- nmap('<leader>gz', function()
           -- Toggle on off LSP diagnostics
+          --
           local map = function(keys, func, desc, mode)
             mode = mode or 'n'
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
           map('<leader>td', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, "[T]oggle [d]iagnostics")
+          map('<leader>tm', function() vim.diagnostic.open_float() end, "[T]oggle diagnostics [m]essage")
         end
       })
     end,
