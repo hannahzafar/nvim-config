@@ -30,7 +30,8 @@ return {
     -- Define your formatters
     formatters_by_ft = {
       lua = { "stylua" },
-
+      bash = { "shfmt" },
+      sh = { "shfmt" },
       python = { "ruff_format", "ruff_organize_imports" },
       yaml = { "prettier", "yamlfmt" },
     },

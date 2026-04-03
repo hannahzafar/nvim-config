@@ -37,9 +37,9 @@ return {
     end,
     opts = {
       servers = {
-        -- bashls = {
-        --   filetypes = {"sh", "zsh"}
-        -- },
+        bashls = {
+          filetypes = {"sh", "zsh"},
+        },
         pyright = {
           settings = {
             pyright = { disableOrganizeImports = true },
