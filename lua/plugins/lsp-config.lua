@@ -11,27 +11,75 @@ return {
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
-    -- init = function ()
-    --   vim.api.nvim_create_autocmd("LspAttach", {
-    --     group = vim.api.nvim_create_augroup("ansauto_lsp", {clear = true}),
-    --     callback = function (_)
-    --       vim.diagnostic.config({ virtual_text = true })
-          -- local nmap = function(lhs, rhs, desc)
-          --   local opts = { silent=true, buffer=0, desc=desc }
-          --   vim.keymap.set({"n", "x"}, lhs, rhs, opts)
-          -- end
-          -- nmap('gd', vim.lsp.buf.definition, "Goto definition")
-          -- nmap('gD', vim.lsp.buf.declaration, "Goto declaration")
-          -- nmap('gry', vim.lsp.buf.type_definition, "Goto type definition")
-          -- nmap('<leader>gz', function()
-          -- Toggle on off LSP diagnostics
-          --
-          local map = function(keys, func, desc, mode)
-            mode = mode or 'n'
-            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+          -- Helper function for keymaps
+          local nmap = function(lhs, rhs, desc)
+            local opts = { silent=true, buffer=event.buf, desc=desc }
+            vim.keymap.set("n", lhs, rhs, opts)
           end
-          map('<leader>td', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, "[T]oggle [d]iagnostics")
-          map('<leader>tm', function() vim.diagnostic.open_float() end, "[T]oggle diagnostics [m]essage")
+          
+          local vmap = function(lhs, rhs, desc)
+            local opts = { silent=true, buffer=event.buf, desc=desc }
+            vim.keymap.set("v", lhs, rhs, opts)
+          end
+
+          -- Get telescope builtin for LSP pickers
+          local builtin = require('telescope.builtin')
+
+          -- ========================================================================
+          -- Navigation mappings (goto) using Telescope for better UI with preview
+          -- ========================================================================
+          nmap('gd', builtin.lsp_definitions, '[G]oto [D]efinition')
+          nmap('gr', builtin.lsp_references, '[G]oto [R]eferences')
+          nmap('gi', builtin.lsp_implementations, '[G]oto [I]mplementation')
+          nmap('gt', builtin.lsp_type_definitions, '[G]oto [T]ype definition')
+          nmap('gs', builtin.lsp_document_symbols, '[G]oto [S]ymbol (document)')
+          nmap('gS', builtin.lsp_dynamic_workspace_symbols, '[G]oto [S]ymbol (workspace)')
+          nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+
+          -- ========================================================================
+          -- Hover documentation
+          -- ========================================================================
+          nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+
+          -- ========================================================================
+          -- LSP Actions under <leader>l
+          -- ========================================================================
+          -- NOTE: These mappings override Neovim 0.11+ built-in LSP mappings:
+          --   - grn (rename) → we use <leader>lr for better which-key discoverability
+          --   - gra (code action) → we use <leader>la for better which-key discoverability
+          --   - grr (references) → we override with 'gr' using Telescope for better UI
+          -- If you prefer the built-in gr* mappings, comment out the conflicting mappings above
+          -- and remove the telescope-based 'gr' mapping.
+          
+          nmap('<leader>lr', vim.lsp.buf.rename, '[L]SP [R]ename')
+          nmap('<leader>la', vim.lsp.buf.code_action, '[L]SP Code [A]ction')
+          vmap('<leader>la', vim.lsp.buf.code_action, '[L]SP Code [A]ction')
+          
+          nmap('<leader>lf', vim.lsp.buf.format, '[L]SP [F]ormat')
+          vmap('<leader>lf', vim.lsp.buf.format, '[L]SP [F]ormat selection')
+          
+          nmap('<leader>lh', vim.lsp.buf.hover, '[L]SP [H]over Documentation')
+          nmap('<leader>ls', vim.lsp.buf.signature_help, '[L]SP [S]ignature Help')
+
+          -- ========================================================================
+          -- Diagnostics under <leader>l
+          -- ========================================================================
+          nmap('<leader>ld', vim.diagnostic.open_float, '[L]SP [D]iagnostic float')
+          nmap('<leader>lt', function() 
+            vim.diagnostic.enable(not vim.diagnostic.is_enabled()) 
+          end, '[L]SP [T]oggle diagnostics')
+
+          -- ========================================================================
+          -- Diagnostic navigation
+          -- ========================================================================
+          nmap(']d', vim.diagnostic.goto_next, 'Next [D]iagnostic')
+          nmap('[d', vim.diagnostic.goto_prev, 'Previous [D]iagnostic')
+          nmap(']e', function() 
+            vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) 
+          end, 'Next [E]rror')
+          nmap('[e', function() 
+            vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) 
+          end, 'Previous [E]rror')
         end
       })
     end,
