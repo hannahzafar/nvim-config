@@ -83,8 +83,7 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
--- Set command-line height to 2 lines to prevent message truncation
-vim.o.cmdheight = 2
+vim.o.cmdheight = 1
 
 -- Setup clipboard on discover
 -- Stolen from TJ Devries:

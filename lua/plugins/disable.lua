@@ -1,6 +1,5 @@
 return {
-  -- disable trouble package
-    -- { "rcarriga/nvim-notify", enabled = false }
-  -- { 'nvim-lualine/lualine.nvim', enabled = false }
+  -- disable trouble package for testing
+  -- { "rcarriga/nvim-notify", enabled = false },
 }
 
