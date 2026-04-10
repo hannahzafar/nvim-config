@@ -4,13 +4,14 @@ return {
     "MunifTanjim/nui.nvim"
   },
   keys = {
+    -- match all search
     { "<leader>sbs",function () require("searchbox").match_all() end, desc = "[S]earch[b]ox [S]earch" },
-    { "<leader>sbc",function () require("searchbox").match_all({default_value = vim.fn.expand("<cword>")}) end,
-      desc = "[S]earch[b]ox search [c]urrent word" },
+    { "<leader>sbS",function () require("searchbox").match_all({default_value = vim.fn.expand("<cword>")}) end, desc = "[S]earch[b]ox search [c]urrent word" },
 
-    { "<leader>sbr",function () require("searchbox").replace({confirm = 'menu'}) end, desc = "[S]earch[b]ox [R]eplace" },
-    { "<leader>sbC",function () require("searchbox").replace({confirm = 'menu',default_value = vim.fn.expand("<cword>")}) end,
-      desc = "[S]earch[b]ox replace [C]urrent word" },
+    -- replace
+    { "<leader>sbr", mode = {"n"}, function () require("searchbox").replace({confirm = 'menu'}) end, desc = "[S]earch[b]ox [R]eplace" }, -- confirm replace in normal mode
+    { "<leader>sbR", function () require("searchbox").replace({visual_mode = true, confirm = 'menu',default_value = vim.fn.expand("<cword>")}) end, desc = "[S]earch[b]ox replace [C]urrent word" },
+    { "<leader>sbr", mode = {"x"}, function () require("searchbox").replace({visual_mode = true}) end, desc = "[S]earch[b]ox [R]eplace" }, -- replace all in visual mode
   },
 }
 
