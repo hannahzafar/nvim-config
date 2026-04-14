@@ -35,6 +35,13 @@ return {
       python = { "ruff_format", "ruff_organize_imports" },
       yaml = { "prettier", "yamlfmt" },
     },
+    format_on_save = function(bufnr)
+    -- Only enable autoformat on save for python filetype
+      if vim.bo[bufnr].filetype ~= "python" then
+        return
+      end
+      return { timeout_ms = 500, lsp_format = "fallback" }
+    end,
     -- Customize formatters
     formatters = {
       shfmt = {
