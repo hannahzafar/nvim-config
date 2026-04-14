@@ -11,7 +11,7 @@ return {
         startify.config
       )
       -- keymap to open other than startup
-      vim.keymap.set("n", "<leader>dh", ":split | Alpha<CR>", { desc = "Dashboard open split" })
-      vim.keymap.set("n", "<leader>dv", ":vsplit | Alpha<CR>", { desc = "Dashboard open vsplit" })
+      vim.keymap.set("n", "<leader>dS", ":split | Alpha<CR>", { desc = "Dashboard open hsplit" })
+      vim.keymap.set("n", "<leader>ds", ":vsplit | Alpha<CR>", { desc = "Dashboard open vsplit" })
     end,
   }
