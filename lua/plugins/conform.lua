@@ -30,8 +30,8 @@ return {
     -- Define your formatters
     formatters_by_ft = {
       lua = { "stylua" },
-      bash = { "shfmt" },
-      sh = { "shfmt" },
+      bash = { "shfmt" , "shellcheck"},
+      sh = { "shfmt" , "shellcheck"},
       python = { "ruff_format", "ruff_organize_imports" },
       yaml = { "prettier", "yamlfmt" },
     },
@@ -45,7 +45,7 @@ return {
     -- Customize formatters
     formatters = {
       shfmt = {
-        append_args = { "-i", "2" },
+        append_args = { "-ln=bash", "-s", "-i", "2" },
       },
     },
   },
