@@ -10,7 +10,7 @@ return {
 
     -- replace
     { "<leader>sbr", mode = {"n"}, function () require("searchbox").replace({confirm = 'menu'}) end, desc = "[S]earch[b]ox [R]eplace" }, -- confirm replace in normal mode
-    { "<leader>sbR", function () require("searchbox").replace({visual_mode = true, confirm = 'menu',default_value = vim.fn.expand("<cword>")}) end, desc = "[S]earch[b]ox replace [C]urrent word" },
+    { "<leader>sbR", mode = {"n"}, function () require("searchbox").replace({confirm = 'menu',default_value = vim.fn.expand("<cword>")}) end, desc = "[S]earch[b]ox replace [C]urrent word" },
     { "<leader>sbr", mode = {"x"}, function () require("searchbox").replace({visual_mode = true}) end, desc = "[S]earch[b]ox [R]eplace" }, -- replace all in visual mode
   },
 }
