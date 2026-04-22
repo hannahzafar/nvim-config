@@ -32,7 +32,8 @@ return {
       lua = { "stylua" },
       bash = { "shfmt" , "shellcheck"},
       sh = { "shfmt" , "shellcheck"},
-      python = { "ruff_format", "ruff_organize_imports" },
+      -- python = { "ruff_format", "ruff_organize_imports" },
+      python = {"black"},
       yaml = { "prettier", "yamlfmt" },
     },
     format_on_save = function(bufnr)
