@@ -2,16 +2,21 @@ return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
+  keys = {
+    { '<leader>i', function() Snacks.notifier.show_history() end, desc = 'Notifications history' },
+  },
   opts = {
-    -- Replaces nvim-notify (no message cutoff bugs)
     notifier = {
       enabled = true,
       timeout = 3000,
+      wo = {
+        wrap = true,
+        linebreak = true,
+        breakindent = true,
+      },
     },
-    -- Replaces dressing.nvim for nice UI popups
     input = {
       enabled = true,
     },
-    -- Optional: nice status column, words, etc.
   },
 }
