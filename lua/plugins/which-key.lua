@@ -13,6 +13,7 @@ return {
       { '<leader>l', group = '[L]SP', mode = { 'n', 'v' } },
       { '<leader>a', group = 'AI' },
       { '<leader>d', group = '[D]ashboard' },
+      { '<leader>n', group = '[N]eotree' },
       { '<leader>s', group = '[S]earch' },
       { '<leader>p', group = '[P]aste special'},
       { '<leader>sb', group = 'Search[b]ox'},
