@@ -5,20 +5,14 @@ return {
     -- Toggle state: 0 = filename only, 1 = relative path (default)
     local filename_path_mode = 1
 
-    -- Function to toggle between filename only and relative path
-    local function toggle_filename_path()
-      if filename_path_mode == 1 then
-        filename_path_mode = 0
-      else
-        filename_path_mode = 1
-      end
-
-      -- Update lualine configuration
+    local function require_lualine_setup(PATH_MODE)
       require('lualine').setup{
         options = {
           { globalstatus = true },
+          -- Set theme to dracula with minor change
           theme = function()
             local dracula = require('lualine.themes.dracula')
+            -- Set terminal mode to have the same appearance as insert mode
             dracula.terminal = vim.deepcopy(dracula.insert)
             return dracula
           end,
@@ -27,7 +21,7 @@ return {
           lualine_c = {
             {
               'filename',
-              path = filename_path_mode,
+              path = PATH_MODE,
             }
           },
           lualine_x = {
@@ -35,10 +29,23 @@ return {
           }
         }
       }
+    end
 
+    -- Function to toggle between filename only and relative path
+    local function toggle_filename_path()
+      if filename_path_mode == 1 then
+        filename_path_mode = 0
+      else
+        filename_path_mode = 1
+      end
+      -- Update lualine configuration
+      require_lualine_setup(filename_path_mode)
+
+
+      -- Notify update
       local mode
       if filename_path_mode == 1 then
-         mode = "ON"
+        mode = "ON"
       else
         mode = "OFF"
       end
@@ -53,28 +60,8 @@ return {
       silent = true,
     })
 
-    require('lualine').setup{
-      options = {
-        { globalstatus = true },
-        -- Set theme to dracula with minor change
-        theme = function()
-          local dracula = require('lualine.themes.dracula')
-          -- Set terminal mode to have the same appearance as insert mode
-          dracula.terminal = vim.deepcopy(dracula.insert)
-          return dracula
-        end,
-      },
-      sections = {
-        lualine_c = {
-          {
-            'filename',
-            path = 1,
-          }
-        },
-        lualine_x = {
-            'fileformat', 'filetype'
-          }
-        }
-      }
+
+    require_lualine_setup(filename_path_mode)
+
   end
 }
