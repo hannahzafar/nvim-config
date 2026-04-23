@@ -35,12 +35,20 @@ return {
           }
         }
       }
+
+      local mode
+      if filename_path_mode == 1 then
+         mode = "ON"
+      else
+        mode = "OFF"
+      end
+      vim.notify("Toggle path " .. mode .. " in lualine" , vim.log.levels.INFO)
     end
 
     -- Create a command and keybinding to toggle
     vim.api.nvim_create_user_command('ToggleFilenamePath', toggle_filename_path, {})
-    vim.keymap.set('n', '<leader>tf', toggle_filename_path, {
-      desc = 'Toggle filename/path in lualine',
+    vim.keymap.set('n', '<leader>tp', toggle_filename_path, {
+      desc = '[T]oggle [p]ath in lualine',
       noremap = true,
       silent = true,
     })
