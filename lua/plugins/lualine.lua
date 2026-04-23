@@ -2,6 +2,49 @@ return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
+    -- Toggle state: 0 = filename only, 1 = relative path (default)
+    local filename_path_mode = 1
+
+    -- Function to toggle between filename only and relative path
+    local function toggle_filename_path()
+      if filename_path_mode == 1 then
+        filename_path_mode = 0
+      else
+        filename_path_mode = 1
+      end
+
+      -- Update lualine configuration
+      require('lualine').setup{
+        options = {
+          { globalstatus = true },
+          theme = function()
+            local dracula = require('lualine.themes.dracula')
+            dracula.terminal = vim.deepcopy(dracula.insert)
+            return dracula
+          end,
+        },
+        sections = {
+          lualine_c = {
+            {
+              'filename',
+              path = filename_path_mode,
+            }
+          },
+          lualine_x = {
+            'fileformat', 'filetype'
+          }
+        }
+      }
+    end
+
+    -- Create a command and keybinding to toggle
+    vim.api.nvim_create_user_command('ToggleFilenamePath', toggle_filename_path, {})
+    vim.keymap.set('n', '<leader>tf', toggle_filename_path, {
+      desc = 'Toggle filename/path in lualine',
+      noremap = true,
+      silent = true,
+    })
+
     require('lualine').setup{
       options = {
         { globalstatus = true },
@@ -13,20 +56,15 @@ return {
           return dracula
         end,
       },
-        sections = {
-          lualine_c = {
-            {
-              'filename',
-              path = 1,
-            }
-          },
-          lualine_x = {
-            -- {
-            --   'lsp_status',
-            --   -- List of LSP names to ignore (e.g., `null-ls`):
-            --   --ignore_lsp = {'null-ls'},
-            -- },
-            'encoding', 'fileformat', 'filetype'
+      sections = {
+        lualine_c = {
+          {
+            'filename',
+            path = 1,
+          }
+        },
+        lualine_x = {
+            'fileformat', 'filetype'
           }
         }
       }
