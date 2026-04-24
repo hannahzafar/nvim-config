@@ -9,7 +9,7 @@ return {
   lazy = false, -- neo-tree will lazily load itself
   keys = {
     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
-    { '<leader>ng', ':Neotree float git_status<CR>', desc = '[N]eoTree [g]it status', silent = true },
+    { '<leader>gw', ':Neotree float git_status<CR>', desc = '[G]it status [w]indow (Neotree)', silent = true },
   },
   filesystem = {
     follow_current_file = {
