@@ -16,6 +16,7 @@ return {
       { '<leader>s', group = '[S]earch' },
       { '<leader>p', group = '[P]aste special'},
       { '<leader>sb', group = 'Search[b]ox'},
+      { '<leader>o', group = 'T[o]dos'},
       { 'g', group = '[G]oto'},
       { 'z', group = 'Folding'},
     },
