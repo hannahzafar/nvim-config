@@ -1,6 +1,5 @@
 return {
     "goolord/alpha-nvim",
-    -- dependencies = { 'echasnovski/mini.icons' },
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       local startify = require("alpha.themes.startify")
@@ -11,7 +10,7 @@ return {
         startify.config
       )
       -- keymap to open other than startup
-      vim.keymap.set("n", "<leader>dS", ":split | Alpha<CR>", { desc = "Dashboard open hsplit" })
-      vim.keymap.set("n", "<leader>ds", ":vsplit | Alpha<CR>", { desc = "Dashboard open vsplit" })
+      vim.keymap.set("n", "<leader>dS", ":split | Alpha<CR>", { desc = "Dashboard open hsplit" , silent = true })
+      vim.keymap.set("n", "<leader>ds", ":vsplit | Alpha<CR>", { desc = "Dashboard open vsplit" , silent = true })
     end,
   }
