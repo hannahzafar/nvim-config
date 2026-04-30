@@ -13,11 +13,13 @@ return {
       { '<leader>l', group = '[L]SP', mode = { 'n', 'v' } },
       { '<leader>a', group = 'AI' },
       { '<leader>d', group = '[D]ashboard' },
+      { '<leader>m', group = '[M]arks & Bookmarks' },
       { '<leader>s', group = '[S]earch' },
       { '<leader>p', group = '[P]aste special'},
       { '<leader>sb', group = 'Search[b]ox'},
       { '<leader>o', group = 'T[o]dos'},
       { 'g', group = '[G]oto'},
+      { 'm', group = '[M]arks & Bookmarks' , mode = { 'n'}}, -- This won't appear unless I go back from <leader> (doesn't work as a sequence?)
       { 'z', group = 'Folding'},
     },
     sort = { "group"},
