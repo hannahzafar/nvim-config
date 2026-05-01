@@ -19,7 +19,6 @@ return {
         local status = vim.b.autoformat_enabled and "enabled" or "disabled"
         vim.notify("Auto-format on save " .. status .. " for this buffer", vim.log.levels.INFO)
       end,
-      mode = "",
       desc = "[T]oggle [f]ormat on save",
     },
   },
