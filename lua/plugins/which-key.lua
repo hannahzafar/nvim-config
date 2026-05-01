@@ -3,10 +3,9 @@ return {
   event = "VeryLazy",
   opts = {
     icons = {
-      mappings = false
     },
     spec = {
-      { '<leader>a', group = 'AI' },
+      { '<leader>a', group = '[A]I' },
       { '<leader>d', group = '[D]ashboard' },
       { '<leader>g', group = '[G]it', mode = { 'n', 'v' } },
       { '<leader>gB', group = 'Git [B]uffer', mode = { 'n', 'v' } },
