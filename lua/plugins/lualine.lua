@@ -2,11 +2,11 @@ return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
-    -- Toggle state: 0 = filename only, 1 = relative path (default)
-    local filename_path_mode = 1
+    local lualine_a = { 'mode'}
+    local filename_path_mode = 1 -- Toggle state: 0 = filename only, 1 = relative path (default)
     local lualine_x = {'encoding', 'fileformat', 'filetype'}
 
-    local function require_lualine_setup(PATH_MODE, LUALINE_X)
+    local function require_lualine_setup(LUALINE_A, PATH_MODE, LUALINE_X)
       require('lualine').setup{
         options = {
           { globalstatus = true },
@@ -19,6 +19,7 @@ return {
           end,
         },
         sections = {
+          lualine_a = LUALINE_A,
           lualine_c = {
             {
               'filename',
@@ -41,14 +42,16 @@ return {
       local mode
       if filename_path_mode == 0 then
         mode = "SHORT"
-        lualine_x = {'filetype'}
+        lualine_a ={ { 'mode', fmt = function(str) return str:sub(1,1) end } }
+        lualine_x = {}
       else
         mode = "DEFAULT"
+        lualine_a = { 'mode'}
         lualine_x = {'encoding', 'fileformat', 'filetype'}
       end
 
       -- Update lualine configuration and notify
-      require_lualine_setup(filename_path_mode, lualine_x)
+      require_lualine_setup(lualine_a, filename_path_mode, lualine_x)
       vim.notify("Lualine " .. mode .. " mode", vim.log.levels.INFO)
     end
 
@@ -61,7 +64,7 @@ return {
     })
 
 
-    require_lualine_setup(filename_path_mode)
+    require_lualine_setup(lualine_a, filename_path_mode, lualine_x)
 
   end
 }
