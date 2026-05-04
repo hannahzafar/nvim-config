@@ -2,11 +2,12 @@ return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
-    local lualine_a = { 'mode'}
+    local default_lualine_a = { 'mode'}
+    local default_lualine_b = {'branch', 'diff', 'diagnostics'}
     local filename_path_mode = 1 -- Toggle state: 0 = filename only, 1 = relative path (default)
-    local lualine_x = {'encoding', 'fileformat', 'filetype'}
+    local default_lualine_x = {'encoding', 'fileformat', 'filetype'}
 
-    local function require_lualine_setup(LUALINE_A, PATH_MODE, LUALINE_X)
+    local function require_lualine_setup(LUALINE_A, LUALINE_B, PATH_MODE, LUALINE_X)
       require('lualine').setup{
         options = {
           { globalstatus = true },
@@ -20,6 +21,7 @@ return {
         },
         sections = {
           lualine_a = LUALINE_A,
+          lualine_b = LUALINE_B,
           lualine_c = {
             {
               'filename',
@@ -31,6 +33,8 @@ return {
       }
     end
 
+    require_lualine_setup(default_lualine_a, default_lualine_b, filename_path_mode, default_lualine_x)
+
     -- Function to toggle between full and simple lualine
     local function toggle_short_lualine()
       if filename_path_mode == 1 then
@@ -39,19 +43,21 @@ return {
         filename_path_mode = 1
       end
 
-      local mode
+      local mode, lualine_a, lualine_b, lualine_x
       if filename_path_mode == 0 then
         mode = "SHORT"
         lualine_a ={ { 'mode', fmt = function(str) return str:sub(1,1) end } }
+        lualine_b = {'branch'}
         lualine_x = {}
       else
         mode = "DEFAULT"
-        lualine_a = { 'mode'}
-        lualine_x = {'encoding', 'fileformat', 'filetype'}
+        lualine_a = default_lualine_a
+        lualine_b = default_lualine_b
+        lualine_x = default_lualine_x
       end
 
       -- Update lualine configuration and notify
-      require_lualine_setup(lualine_a, filename_path_mode, lualine_x)
+      require_lualine_setup(lualine_a, lualine_b, filename_path_mode, lualine_x)
       vim.notify("Lualine " .. mode .. " mode", vim.log.levels.INFO)
     end
 
@@ -62,9 +68,6 @@ return {
       noremap = true,
       silent = true,
     })
-
-
-    require_lualine_setup(lualine_a, filename_path_mode, lualine_x)
 
   end
 }
