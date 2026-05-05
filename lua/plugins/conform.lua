@@ -40,7 +40,7 @@ return {
       if vim.bo[bufnr].filetype ~= "python" then
         return
       end
-      return { timeout_ms = 500, lsp_format = "fallback" }
+      return { timeout_ms = 3000, lsp_format = "fallback" }
     end,
     -- Customize formatters
     formatters = {
