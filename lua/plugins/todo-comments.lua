@@ -9,8 +9,8 @@ return {
     -- refer to the configuration section below
   },
   keys  = {
-    { "<leader>oq", ":TodoQuickFix<CR>", desc = "T[o]do [q]uickfix list", silent = true},
-    { "<leader>ol", ":TodoLocList<CR>", desc =  "T[o]do [l]ocation list", silent = true},
-    { "<leader>st", ":TodoTelescope<CR>", desc = "[S]earch [t]odo list" }
+    { "<leader>oq", ":TodoQuickFix<CR>", desc = "Todo quickfix list", silent = true},
+    { "<leader>ol", ":TodoLocList<CR>", desc =  "Todo location list", silent = true},
+    { "<leader>st", ":TodoTelescope<CR>", desc = "Search todo list" }
   }
 }

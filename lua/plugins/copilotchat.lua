@@ -6,7 +6,7 @@ return {
     },
     build = "make tiktoken",
     keys = {
-      { "<leader>ac", ":CopilotChatToggle<CR>", desc = "Toggle Copilot [C]hat" },
+      { "<leader>Ac", ":CopilotChatToggle<CR>", desc = "Toggle Copilot Chat" },
     }, opts = {
     },
   },

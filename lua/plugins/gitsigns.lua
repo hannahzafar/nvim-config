@@ -93,7 +93,7 @@ return {
         map('n', '<leader>gBr', gitsigns.reset_buffer_index, { desc = 'Git [B]uffer [r]eset index (unstage)' })
         map('n', '<leader>gBR', gitsigns.reset_buffer, { desc = 'Git [B]uffer [R]eset (discard changes)' })
         -- line/hunks:
-        map('n', '<leader>gb', gitsigns.blame_line, { desc = 'Git [b]lame line' })
+        map('n', '<leader>gl', gitsigns.blame_line, { desc = 'Git blame [l]ine' })
         map('n', '<leader>gv', gitsigns.select_hunk, { desc = 'Git hunk [v]isual select' })
         map('n', '<leader>gs', gitsigns.stage_hunk, { desc = 'Git hunk [s]tage/unstage' })
         map('n', '<leader>gu', gitsigns.undo_stage_hunk, { desc = 'Git [u]ndo stage hunk' })
