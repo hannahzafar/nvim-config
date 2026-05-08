@@ -9,6 +9,7 @@ return {
   opts = {
     -- Configurable terminal naming
     terminal_name_format = "Term#%d (%s)", -- number, shell type
+    persist_mode = false,
   },
   config = function(_, opts)
     local toggleterm = require("toggleterm")
