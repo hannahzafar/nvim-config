@@ -10,7 +10,7 @@ return {
   keys = {
     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
     { '<leader>nf', ':Neotree float<CR>', desc = 'NeoTree Float window', silent = true },
-    { '<leader>gA', ':Neotree float git_status<CR>', desc = 'Git status', silent = true },
+    { '<leader>ga', ':Neotree float git_status<CR>', desc = 'Git status', silent = true },
   },
   filesystem = {
     follow_current_file = {

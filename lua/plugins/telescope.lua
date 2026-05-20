@@ -89,7 +89,7 @@ return {
 
       -- Git telescope keymaps
 
-      vim.keymap.set('n', '<leader>ga', builtin.git_status, { desc = 'Git status (Telescope)' })
+      vim.keymap.set('n', '<leader>gA', builtin.git_status, { desc = 'Git status (Telescope)' })
       vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = 'Git commits (Telescope)' })
       vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Git files (Telescope)' })
 
