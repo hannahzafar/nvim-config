@@ -87,6 +87,10 @@ vim.o.confirm = true
 
 vim.o.cmdheight = 1
 
+-- Suppress search count ([1/5]) and scanning messages during incsearch,
+-- which cause the cmdline to flash at cmdheight=1
+vim.opt.shortmess:append("SC")
+
 -- Setup clipboard on discover
 -- Stolen from TJ Devries:
 -- https://github.com/tjdevries/config.nvim/blob/master/plugin/clipboard.lua

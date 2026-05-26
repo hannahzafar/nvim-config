@@ -10,7 +10,6 @@ return {
     local function require_lualine_setup(LUALINE_A, LUALINE_B, PATH_MODE, LUALINE_X)
       require('lualine').setup{
         options = {
-          { globalstatus = true },
           -- Set theme to dracula with minor change
           theme = function()
             local dracula = require('lualine.themes.dracula')
