@@ -30,3 +30,13 @@ vim.api.nvim_create_autocmd("BufNewFile", {
   end,
 })
 
+-- Assign bmessages buffer as lua for syntax highlighting
+vim.api.nvim_create_autocmd({ "BufWinEnter", "BufFilePost" }, {
+  pattern = "bmessages_buffer",
+  callback = function(args)
+    local buf = args.buf
+    local ok, _ = pcall(vim.treesitter.start, buf, "lua")
+    vim.b[buf].dropbar_enable = false
+  end,
+})
+
