@@ -7,7 +7,6 @@ return {
   opts = {
     spec = {
       { '<leader>A', group = 'AI' },
-      { '<leader>a', group = 'Alpha' , icon = {icon = '󰀫' , color= "orange"}},
       { '<leader>g', group = 'Git', mode = { 'n', 'v' } },
       { '<leader>gB', group = 'Git Buffer', mode = { 'n'} },
       { '<leader>gt', group = 'Git Toggle', mode = { 'n', 'v' } },
