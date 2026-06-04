@@ -12,8 +12,7 @@ return {
     {'<leader>z', function() Snacks.zen() end,  desc = 'Zen mode' },
   },
   opts = {
-    -- Git blame line
-    git = { enabled = true},
+    bigfile = { enabled = true },
 
     -- Replace alpha
     dashboard = {
@@ -38,8 +37,14 @@ return {
         { section = "startup" },
         },
       },
+    -- Git blame line
+    git = { enabled = true},
     -- Replace indent
     indent = { enabled = true },
+    -- UI popups
+    input = {
+      enabled = true,
+    },
     -- Replace nvim-notify
     notifier = {
       enabled = true,
@@ -59,10 +64,7 @@ return {
         preview = { wo = {winbar = ""} },
       },
     },
-    -- UI popups
-    input = {
-      enabled = true,
-    },
+    quickfile = { enabled = true },
     zen = {
       enabled = true,
     }
