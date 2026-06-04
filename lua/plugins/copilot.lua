@@ -1,18 +1,23 @@
 return {
-  "github/copilot.vim",
+  "zbirenbaum/copilot.lua",
+  -- requires = {
+  --   "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+  -- },
+  cmd = "Copilot",
   keys = {
-    { "<leader>Al", ":Copilot<CR>", desc = "Load Copilot Inline" },
-    {'<leader>At', function()
-      local status = vim.fn['copilot#Enabled']()
-      if status == 1 then
-        vim.cmd('Copilot disable')
-        vim.notify('Inline Copilot Disabled')
-      else
-        vim.cmd('Copilot enable')
-        vim.notify('Inline Copilot Enabled')
-      end
-    end, desc = "Toggle GitHub Inline Copilot" },
+    { "<leader>c" , "<cmd>Copilot<cr>" , desc = "Copilot AI" },
+    { "<leader>tc", "<cmd>Copilot suggestion toggle_auto_trigger<cr>", desc = "[T]oggle [C]opilot Suggestions" },
   },
+
+  event = "InsertEnter",
+  config = function()
+    require("copilot").setup({
+      panel = { enabled = false },
+      suggestion = {
+        enabled = true,
+        auto_trigger = true,
+      },
+    })
+  end,
+
 }
-
-
