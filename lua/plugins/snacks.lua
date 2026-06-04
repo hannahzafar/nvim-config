@@ -9,6 +9,9 @@ return {
     { "<leader>d", function() vim.cmd("vsplit"); Snacks.dashboard() end, desc = "Open Dashboard vsplit" },
     { "<leader>D", function() vim.cmd("split"); Snacks.dashboard() end, desc = "Open Dashboard in hsplit" },
     {'<leader>gb', function() Snacks.git.blame_line() end,  desc = 'Git [b]lame line' },
+    {'<leader>gg', function() Snacks.lazygit() end,  desc = 'Lazygit' },
+    -- { "<leader>gh", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
+    -- { "<leader>gi", function() Snacks.lazygit.log() end, desc = "Lazygit Log" },
     {'<leader>gl', function() Snacks.picker.git_log_file() end,  desc = 'Git [l]og file' },
     {'<leader>z', function() Snacks.zen() end,  desc = 'Zen mode' },
   },
@@ -46,6 +49,7 @@ return {
     input = {
       enabled = true,
     },
+    lazygit = { enabled = true },
     -- Replace nvim-notify
     notifier = {
       enabled = true,
