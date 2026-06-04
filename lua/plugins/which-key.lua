@@ -6,6 +6,7 @@ return {
   event = "VeryLazy",
   opts = {
     spec = {
+      { '<leader>b', group = 'Buffer(s)' },
       { '<leader>g', group = 'Git', mode = { 'n', 'v' } },
       { '<leader>gB', group = 'Git Buffer', mode = { 'n'} },
       { '<leader>gt', group = 'Git Toggle', mode = { 'n', 'v' } },
