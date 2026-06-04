@@ -29,9 +29,9 @@ return {
             return Snacks.git.get_root() ~= nil
           end,
           cmd = "git status --short --branch --renames",
-          height = 5,
+          height = 4,
           padding = 1,
-          ttl = 5 * 60,
+          ttl = 60,
           indent = 3,
         },
         { section = "keys", gap = 1, padding = 1 },
