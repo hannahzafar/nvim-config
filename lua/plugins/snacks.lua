@@ -38,6 +38,8 @@ return {
         { section = "startup" },
         },
       },
+    -- Replace indent
+    indent = { enabled = true },
     -- Replace nvim-notify
     notifier = {
       enabled = true,
