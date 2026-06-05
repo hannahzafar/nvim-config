@@ -91,6 +91,11 @@ vim.o.cmdheight = 1
 -- which cause the cmdline to flash at cmdheight=1
 vim.opt.shortmess:append("SC")
 
+-- Fold level settings for nvim-ufo
+vim.o.foldlevel = 99 -- nvim-ufo needs a large value to keep folds open
+vim.o.foldlevelstart = 99 -- Start with all folds open when opening a file
+vim.o.foldenable = true
+
 -- Setup clipboard on discover
 -- Stolen from TJ Devries:
 -- https://github.com/tjdevries/config.nvim/blob/master/plugin/clipboard.lua
