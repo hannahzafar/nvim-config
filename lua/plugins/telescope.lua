@@ -76,24 +76,23 @@ return {
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
       -- local telescope_icon = {icon ="󰭎", color = "azure"} #TODO: Have to move all keymaps to keys = {} to insert custom icon per mapping
+      -- Git telescope keymaps
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Search Help' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'Search Keymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Search Files' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = 'Search Select Telescope' })
-      vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'Search current Word' })
-      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'Search by Grep' })
+      vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'Search current word/selection' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'Search Diagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = 'Search Resume' })
-      vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = 'Search Recent Files ("." for repeat)' })
+      vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = 'Search Recent Files' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = 'Find existing buffers' })
 
-      -- Git telescope keymaps
 
       vim.keymap.set('n', '<leader>gA', builtin.git_status, { desc = 'Git status (Telescope)' })
       vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = 'Git commits (Telescope)' })
       vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Git files (Telescope)' })
 
-      -- Slightly advanced example of overriding default behavior and theme
+      -- Fuzzy finder with custom display
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -102,7 +101,36 @@ return {
         })
       end, { desc = 'Fuzzily search in current buffer' })
 
-      -- It's also possible to pass additional configuration options.
+      -- Show the current working directory in the title of the Telescope prompt
+      vim.keymap.set('n', '<leader>sg', function()
+        -- Get the current working directory
+        local current_dir = vim.fn.getcwd()
+        -- Shorten it for cleaner display (optional)
+        local function format_telescope_cwd(path, keep_count)
+          local short = vim.fn.fnamemodify(path, ":~")
+          local parts = vim.split(short, "/", { trimempty = true })
+
+          -- If the path is short already, leave it alone
+          if #parts <= keep_count + 1 then return short end
+
+          -- Shrink everything except the last N components
+          for i = 1, (#parts - keep_count) do
+            -- Don't shrink the '~' if it's the first element
+            if parts[i] ~= "~" then
+              parts[i] = string.sub(parts[i], 1, 1)
+            end
+          end
+
+          -- Reconstruct the path (add leading slash back if it was an absolute root path)
+          local prefix = string.sub(short, 1, 1) == "/" and "/" or ""
+          return prefix .. table.concat(parts, "/")
+        end
+
+        require('telescope.builtin').live_grep({
+          prompt_title = "Live Grep in " .. format_telescope_cwd(current_dir, 4),
+        })
+      end, { desc = "Live Grep in CWD" })
+
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
       vim.keymap.set('n', '<leader>s/', function()
         builtin.live_grep {
@@ -113,15 +141,14 @@ return {
 
       -- Shortcut for searching your Neovim configuration files
       vim.keymap.set('n', '<leader>sn', function()
-        builtin.find_files { cwd = vim.fn.stdpath 'config' }
+        builtin.find_files {prompt_title = "Neovim Config Files", cwd = vim.fn.stdpath 'config' }
       end, { desc = 'Search Neovim files' })
 
     -- Add grep Neovim files
       vim.keymap.set('n', '<leader>sN', function()
         builtin.live_grep { cwd = vim.fn.stdpath 'config' }
-      end, { desc = 'Search Neovim files with Grep ' })
+      end, { desc = 'Search Neovim files with Grep' })
     end,
 
   },
 }
--- vim: ts=2 sts=2 sw=2 et
