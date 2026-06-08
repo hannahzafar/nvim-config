@@ -3,11 +3,26 @@ return {
   priority = 1000,
   lazy = false,
   keys = {
-    {"/", function() Snacks.picker.lines({ layout = { preset = "ivy"} }) end,  desc = "Buffer Snacks Search" },-- Substitute native forward search with Snacks lines picker
+    {"/",
+      function() 	Snacks.picker.lines({ 
+        matcher = {fuzzy = false },
+        layout = {
+          title = "Buffer Lines",
+          position = "bottom",     -- Anchors the popup near the bottom
+          width = 0.6,             -- Takes up 60% of the screen width
+          height = 10,             -- Only 10 lines tall maximum
+          border = "rounded",
+          box = "vertical",
+        }
+      })
+      end,
+      desc = "Buffer Exact Search" }, -- Substitute native forward search with Snacks lines picker
     { '<leader>bd', function() Snacks.bufdelete() end, desc = 'Buffer delete' },
     { '<leader>i', function() Snacks.notifier.show_history() end, desc = 'Notifications history' },
-    { "<leader>d", function() vim.cmd("vsplit"); Snacks.dashboard() end, desc = "Open Dashboard vsplit" },
-    { "<leader>D", function() vim.cmd("split"); Snacks.dashboard() end, desc = "Open Dashboard in hsplit" },
+    { "<leader>d", function() vim.cmd("vsplit")
+Snacks.dashboard() end, desc = "Open Dashboard vsplit" },
+    { "<leader>D", function() vim.cmd("split")
+Snacks.dashboard() end, desc = "Open Dashboard in hsplit" },
     {'<leader>gb', function() Snacks.git.blame_line() end,  desc = 'Git [b]lame line' },
     {'<leader>gg', function() Snacks.lazygit() end,  desc = 'Lazygit' },
     -- { "<leader>gh", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
