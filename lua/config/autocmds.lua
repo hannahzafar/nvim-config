@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd("BufNewFile", {
   pattern = "*.py", -- Apply to new files with .py extension
   callback = function()
     if vim.fn.line('$') == 1 and vim.fn.getline(1) == '' then
-      vim.api.nvim_buf_set_lines(0, 0, 0, false, { "#!/usr/bin/env python" })
+      vim.api.nvim_buf_set_lines(0, 0, 0, false, { "#!/usr/bin/env python3" })
     end
   end,
 })

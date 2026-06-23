@@ -11,5 +11,14 @@
       "$0"
     ],
     "description": "Insert SLURM standard batch header"
+  },
+
+  "Bash Shebang": {
+    "prefix": "shebang",
+    "body": [
+      "#!/bin/bash",
+      ""
+    ],
+    "description": "Inserts bash shebang"
   }
 }
