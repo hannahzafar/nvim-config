@@ -6,6 +6,15 @@
       ""
     ],
     "description": "Inserts python3 shebang"
+  },
+    "Grab root logger": {
+    "prefix": "getLogger",
+    "body": [
+      "import logging",
+      "logger = logging.getLogger(__name__)",
+      ""
+    ],
+    "description": "Grab root logger within a module"
   }
 }
 

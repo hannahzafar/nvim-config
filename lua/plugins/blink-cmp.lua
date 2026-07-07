@@ -37,7 +37,19 @@ return {
     },
 
     -- (Default) Only show the documentation popup when manually triggered
-    completion = { documentation = { auto_show = false } },
+    completion = {
+      documentation = { auto_show = false },
+      menu = {
+        draw = {
+          -- This defines the columns in the autocomplete menu.
+          -- Adding "kind" next to "kind_icon" will print the actual word!
+          columns = {
+            { "label", "label_description", gap = 1 },
+            { "kind_icon", "kind" }
+          }
+        }
+      }
+    },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
