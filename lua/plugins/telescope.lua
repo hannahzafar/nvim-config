@@ -131,6 +131,12 @@ return {
         })
       end, { desc = "Live Grep in CWD" })
 
+      vim.keymap.set('n', '<leader>sG', function()
+        require('telescope.builtin').live_grep({
+          additional_args = { '-l' }
+        })
+      end, { desc = "Telescope Live Grep (Files only)" })
+
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
       vim.keymap.set('n', '<leader>s/', function()
         builtin.live_grep {
