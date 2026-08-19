@@ -3,11 +3,11 @@ return {
   priority = 1000,
   lazy = false,
   keys = {
-    {"/",
+    {"<leader>/",
       function() 	Snacks.picker.lines({ 
         matcher = {fuzzy = false },
+        title = "Snacks picker",
         layout = {
-          title = "Buffer Lines",
           position = "bottom",     -- Anchors the popup near the bottom
           width = 0.6,             -- Takes up 60% of the screen width
           height = 10,             -- Only 10 lines tall maximum
@@ -16,7 +16,7 @@ return {
         }
       })
       end,
-      desc = "Buffer Exact Search" }, -- Substitute native forward search with Snacks lines picker
+      desc = "Snacks Buffer Exact Search" }, -- Substitute native forward search with Snacks lines picker
     { '<leader>bd', function() Snacks.bufdelete() end, desc = 'Buffer delete' },
     { '<leader>i', function() Snacks.notifier.show_history() end, desc = 'Notifications history' },
     { "<leader>d", function() vim.cmd("vsplit")

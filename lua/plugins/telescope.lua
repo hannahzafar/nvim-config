@@ -80,26 +80,28 @@ return {
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Search Help' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'Search Keymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Search Files' })
-      vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = 'Search Select Telescope' })
+      vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = 'Search Telescope Builtin' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'Search current word/selection' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'Search Diagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = 'Search Resume' })
-      vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = 'Search Recent Files' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = 'Find existing buffers' })
 
+      vim.keymap.set('n', '<leader>s.', function()
+        require('telescope.builtin').oldfiles({prompt_title = "Recent files"})
+      end, { desc = 'Search Recent Files' })
 
       vim.keymap.set('n', '<leader>gA', builtin.git_status, { desc = 'Git status (Telescope)' })
       vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = 'Git commits (Telescope)' })
       vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Git files (Telescope)' })
 
       -- Fuzzy finder with custom display
-      vim.keymap.set('n', '<leader>/', function()
+      vim.keymap.set('n', '<leader>bf', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
           winblend = 10,
           previewer = false,
         })
-      end, { desc = 'Fuzzily search in current buffer' })
+      end, { desc = 'Telescope Buffer Fuzzy Find' })
 
       -- Show the current working directory in the title of the Telescope prompt
       vim.keymap.set('n', '<leader>sg', function()

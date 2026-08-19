@@ -16,7 +16,7 @@ return {
       { '<leader>o', group = 'Todo', icon = {icon = '󰝖' , color= "purple"}},
       { '<leader>p', group = 'Paste special'},
       { '<leader>s', group = 'Search' , mode = { 'n', 'v' } },
-      { '<leader>sb', group = 'Searchbox', mode = { 'n', 'v' } },
+      { '<leader>bs', group = 'Searchbox', mode = { 'n', 'v' } },
       { '<leader>t', group = 'Toggle' },
       { '<leader>,', group = 'Terminal' },
       { 'g', group = 'Go to'},

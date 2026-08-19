@@ -5,14 +5,14 @@ return {
   },
   keys = {
     -- match all search
-    { "<leader>sbs",function () require("searchbox").match_all() end, desc = "[S]earch[b]ox [S]earch" },
-    { "<leader>sbS",function () require("searchbox").match_all({default_value = vim.fn.expand("<cword>")}) end, desc = "[S]earch[b]ox search [c]urrent word" },
+    { "<leader>bss",function () require("searchbox").match_all() end, desc = "Searchbox [S]earch" },
+    { "<leader>bsc",function () require("searchbox").match_all({default_value = vim.fn.expand("<cword>")}) end, desc = "Searchbox [c]urrent word" },
 
     -- replace
-    { "<leader>sbr", mode = {"n"}, function () require("searchbox").replace({confirm = 'menu'}) end, desc = "[S]earch[b]ox [R]eplace" }, -- confirm replace in normal mode
-    { "<leader>sbR", mode = {"n"}, function () require("searchbox").replace({confirm = 'menu',default_value = vim.fn.expand("<cword>")}) end, desc = "[S]earch[b]ox replace [C]urrent word" },
+    { "<leader>bsr", mode = {"n"}, function () require("searchbox").replace({confirm = 'menu'}) end, desc = "Searchbox [r]eplace" }, -- confirm replace in normal mode
+    { "<leader>bsR", mode = {"n"}, function () require("searchbox").replace({confirm = 'menu',default_value = vim.fn.expand("<cword>")}) end, desc = "Searchbox [R]eplace current word" },
     -- { "<leader>sbr", mode = {"x"}, function () require("searchbox").replace({visual_mode = true, default_value = vim.fn.getreg('v')}) end, desc = "[S]earch[b]ox [R]eplace current selection" }, -- replace current selection # Can't get this working
-    { "<leader>sba", mode = {"x"}, function () require("searchbox").replace({visual_mode = true}) end, desc = "[S]earch[b]ox Replace [A]ll Selected" }, -- replace all in visual mode
+    { "<leader>bsa", mode = {"x"}, function () require("searchbox").replace({visual_mode = true}) end, desc = "Searchbox replace [A]ll selected" }, -- replace all in visual mode
   },
 }
 
