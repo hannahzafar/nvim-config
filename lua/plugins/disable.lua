@@ -20,6 +20,7 @@ local disable_plugins = {
   -- "nvim-treesitter/nvim-treesitter",
   -- "kevinhwang91/nvim-ufo",
   -- "folke/which-key.nvim",
+  "folke/noice.nvim",
 }
 
 local function disable_my_plugins(plugin_list)
