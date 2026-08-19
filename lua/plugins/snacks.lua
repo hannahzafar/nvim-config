@@ -17,6 +17,7 @@ return {
       })
       end,
       desc = "Snacks Buffer Exact Search" }, -- Substitute native forward search with Snacks lines picker
+    { "<leader>>", function() Snacks.picker.resume() end, desc = "Snacks Resume Search" }, -- resume search
     { '<leader>bd', function() Snacks.bufdelete() end, desc = 'Buffer delete' },
     { '<leader>i', function() Snacks.notifier.show_history() end, desc = 'Notifications history' },
     { "<leader>d", function() vim.cmd("vsplit")
