@@ -14,11 +14,12 @@ return {
       { '<leader>m', group = 'Marks & Bookmarks', icon = {icon = '󰸕' , color= "orange"}},
       { '<leader>n', group = 'NeoTree', icon = {icon = '󰙅' , color= "yellow"}},
       { '<leader>o', group = 'Todo', icon = {icon = '󰝖' , color= "purple"}},
-      { '<leader>p', group = 'Paste special'},
+      { '<leader>p', group = 'Projects' },
       { '<leader>s', group = 'Search' , mode = { 'n', 'v' } },
       { '<leader>bs', group = 'Searchbox', mode = { 'n', 'v' } },
       { '<leader>t', group = 'Toggle' },
       { '<leader>,', group = 'Terminal' },
+      { '<leader>+', group = 'Paste special'},
       { 'g', group = 'Go to'},
       { 'm', group = 'Marks & Bookmarks' , mode = { 'n'}}, -- This won't appear unless I go back from <leader> (doesn't work as a sequence?)
       { 'z', group = 'Folding'},

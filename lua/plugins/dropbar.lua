@@ -7,7 +7,7 @@ return {
   },
   event = { "BufReadPre", "BufNewFile" }, -- load dropbar when opening a file
   keys = {
-    {'<Leader>;', function() require('dropbar.api').pick() end,  desc = 'Pick symbols in winbar' },
+    {'<Leader>b', function() require('dropbar.api').pick() end,  desc = 'Pick symbols in winbar' },
     {'[;', function() require('dropbar_api').goto_context_start() end,  desc = 'Go to start of current context' },
     {'];', function() require('dropbar_api').select_next_context() end,  desc = 'Select next context' },
 

@@ -1,20 +1,32 @@
 return {
   "zbirenbaum/copilot.lua",
-  lazy = true,
-  cmd = "Copilot",
-  keys = {
-    { "<leader>c" , "<cmd>Copilot<cr>" , desc = "Copilot AI" },
-    { "<leader>tc", "<cmd>Copilot suggestion toggle_auto_trigger<cr>", desc = "[T]oggle [C]opilot Suggestions" },
-  },
-
-  config = function()
-    require("copilot").setup({
-      panel = { enabled = false },
-      suggestion = {
-        enabled = true,
-        auto_trigger = true,
+  opts = {
+    suggestion = {
+      enabled = true,
+      auto_trigger = true, -- Automatically start autocomplete suggestions
+      debounce = 75,
+      keymap = {
+        accept = "<C-y>",
+        accept_word = false,
+        accept_line = false,
+        next = "<C-n>",
+        prev = "<C-p>",
+        dismiss = "<C-d>",
       },
-    })
+    },
+    filetypes = {
+      yaml = false,
+      markdown = false,
+      help = false,
+      gitcommit = false,
+      gitrebase = false,
+      hgcommit = false,
+      svn = false,
+      ["."] = false,
+    },
+  },
+  config = function(_, opts)
+    require("copilot").setup(opts)
   end,
-
 }
+

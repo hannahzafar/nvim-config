@@ -35,12 +35,12 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('v', '<leader>ds', ":normal! 0d^<CR>", { desc = "Delete spaces before first character" })
 
 -- Paste character text below current line
-vim.keymap.set("n", "<leader>pb", [[:set paste<CR>o<C-R>+<Esc>:set nopaste<CR>]],
-  { desc = "[P]aste from clipboard [B]elow current line" })
+vim.keymap.set("n", "<leader>+b", [[:set paste<CR>o<C-R>+<Esc>:set nopaste<CR>]],
+  { desc = "+Paste from clipboard [B]elow current line" })
 
 -- Paste character text above current line
-vim.keymap.set("n", "<leader>pa", [[:set paste<CR>O<C-R>+<Esc>:set nopaste<CR>]],
-  { desc = "[P]aste from clipboard [A]bove current line" })
+vim.keymap.set("n", "<leader>+a", [[:set paste<CR>O<C-R>+<Esc>:set nopaste<CR>]],
+  { desc = "+Paste from clipboard [A]bove current line" })
 
 -- Set CWD to directory of current buffer
 vim.keymap.set('n', '<leader>.', function()
